@@ -4,10 +4,10 @@
 
 Last updated _7/24/2018_
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fthinprintbrokerdev.blob.core.windows.net%2Ftls%2Ftlg-base-config_3-vm%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fbtrappe%2FTLD%2Fblob%2Fmaster%2Ftlg-base-config_3-vm%2Fazuredeploy.json" target="_blank">
 <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fmaxskunkworks%2Ftlg%2Fmaster%2Ftlg-base-config_3-vm%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fgithub.com%2Fbtrappe%2FTLD%2Fblob%2Fmaster%2Ftlg-base-config_3-vm%2Fazuredeploy.json" target="_blank">
 <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
