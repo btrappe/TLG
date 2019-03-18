@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "configName": {
+      "value": "TlgBaseConfig-01"
+    },
+    "domainName": {
+      "value": "corp.contoso.com"
+    },
+    "serverOS": {
+      "value": "2016-Datacenter"
+    },
+    "adminUsername": {
+      "value": "Administrateur"
+    },
+    "adminPassword": {
+      "value": ""
+    },
+    "deployADC2": {
+      "value": "no"
+    },
+    "deployADC3": {
+      "value": "no"
+    },
+    "deployAPP2": {
+      "value": "yes"
+    },
+    "deployClientVM": {
+      "value": "no"
+    },
+    "clientVhdUri": {
+      "value": "yes"
+    },
+    "vmSize": {
+      "value": "Standard_DS2_v2"
+    },
+    "dnsLabelPrefix": {
+      "value": ""
+    },
+    "_artifactsLocation": {
+      "value": "https://thinprintbrokerdev.blob.core.windows.net/tls/tlg-base-config_3-vm"
+    },
+    "_artifactsLocation": {
+      "value": ""
+    }
+  }
+}
