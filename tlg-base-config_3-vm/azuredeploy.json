@@ -483,7 +483,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('templates'),'/app.json',parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(variables('templates'),'/app1.json',parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -518,7 +518,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('templates'),'/app.json',parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(variables('templates'),'/app2.json',parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
