@@ -23,7 +23,7 @@
       },
       "defaultValue": "sub.corp.contoso.com"
     },
-    "domainNam3": {
+    "domainName3": {
       "type": "string",
       "metadata": {
         "description": "The FQDN of the new 2. AD domain."
@@ -179,8 +179,8 @@
       "adminPassword": "[parameters('adminPassword')]",
       "storageAccountNamePrefix": "[variables('storageAccountName')]",
       "sasToken": "[parameters('_artifactsLocationSasToken')]",
-      "domainName": "[parameters('domainName')]"
-      "domainName2": "[parameters('domainName2')]"
+      "domainName": "[parameters('domainName')]",
+      "domainName2": "[parameters('domainName2')]",
       "domainName3": "[parameters('domainName3')]"
     }
   },
