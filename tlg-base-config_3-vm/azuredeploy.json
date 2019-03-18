@@ -90,7 +90,7 @@
       "metadata": {
         "description": "Choose 'No' to deploy no client VM, or 'Yes' if you want to deploy a client VM from a custom generalized VHD that you have uploaded to an accessible storage account."
       },
-      "defaultValue": "Yes"
+      "defaultValue": "No"
     },
     "clientVhdUri": {
       "type": "string",
