@@ -293,7 +293,7 @@
       "properties": {
         "publicIPAllocationMethod": "Static",
         "dnsSettings": {
-          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad'))]"
+          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad2'))]"
         }
       }
     },
@@ -307,7 +307,7 @@
       "properties": {
         "publicIPAllocationMethod": "Static",
         "dnsSettings": {
-          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad'))]"
+          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad3'))]"
         }
       }
     },
