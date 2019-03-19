@@ -285,6 +285,34 @@
     },
     {
       "apiVersion": "2017-06-01",
+      "condition": "[equals(parameters('deployADC2'),'Yes')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('VMs').ad2PublicIpName]",
+      "location": "[resourceGroup().location]",
+      "comments": "This is the public IP address for the ADDC VM.",
+      "properties": {
+        "publicIPAllocationMethod": "Static",
+        "dnsSettings": {
+          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad'))]"
+        }
+      }
+    },
+    {
+      "apiVersion": "2017-06-01",
+      "condition": "[equals(parameters('deployADC3'),'Yes')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('VMs').ad3PublicIpName]",
+      "location": "[resourceGroup().location]",
+      "comments": "This is the public IP address for the ADDC VM.",
+      "properties": {
+        "publicIPAllocationMethod": "Static",
+        "dnsSettings": {
+          "domainNameLabel": "[toLower(concat(parameters('dnsLabelPrefix'),'ad'))]"
+        }
+      }
+    },
+    {
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('VMs').appPublicIpName]",
       "location": "[resourceGroup().location]",
@@ -716,6 +744,14 @@
     "DcPublicIpAddress": {
       "type": "string",
       "value": "[reference(variables('VMs').adPublicIpName).ipAddress]"
+    },
+    "Dc2PublicIpAddress": {
+      "type": "string",
+      "value": "[reference(variables('VMs').ad2PublicIpName).ipAddress]"
+    },
+    "Dc3PublicIpAddress": {
+      "type": "string",
+      "value": "[reference(variables('VMs').ad3PublicIpName).ipAddress]"
     },
     "DcFqdn": {
       "type": "string",
