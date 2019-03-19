@@ -745,14 +745,6 @@
       "type": "string",
       "value": "[reference(variables('VMs').adPublicIpName).ipAddress]"
     },
-    "Dc2PublicIpAddress": {
-      "type": "string",
-      "value": "[reference(variables('VMs').ad2PublicIpName).ipAddress]"
-    },
-    "Dc3PublicIpAddress": {
-      "type": "string",
-      "value": "[reference(variables('VMs').ad3PublicIpName).ipAddress]"
-    },
     "DcFqdn": {
       "type": "string",
       "value": "[reference(variables('VMs').adPublicIpName).dnsSettings.fqdn]"
