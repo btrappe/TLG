@@ -756,16 +756,6 @@
     "AppFqdn": {
       "type": "string",
       "value": "[reference(variables('VMs').appPublicIpName).dnsSettings.fqdn]"
-    },
-    "App2PublicIpAddress": {
-      "condition": "[equals(parameters('deployAPP2'),'Yes')]",
-      "type": "string",
-      "value": "[reference(variables('VMs').app2PublicIpName).ipAddress]"
-    },
-    "App2Fqdn": {
-      "condition": "[equals(parameters('deployAPP2'),'Yes')]",
-      "type": "string",
-      "value": "[reference(variables('VMs').app2PublicIpName).dnsSettings.fqdn]"
     }
   }
 }
