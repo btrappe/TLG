@@ -151,22 +151,36 @@
       "adNicIP": "10.0.0.10",
       "adPublicIpName": "[concat(parameters('configName'),'-AD_IP')]",
 
+      "ad2VmName": "DC2",
+      "ad2ConfigurationFunction": {
+        "CreateADChildPDC": "CreateADPDC.ps1\\CreateADPDC"
+      },
+      "ad2NicIP": "10.0.0.11",
+      "ad2PublicIpName": "[concat(parameters('configName'),'-AD2_IP')]",
+
+      "ad3VmName": "DC3",
+      "ad3ConfigurationFunction": {
+        "CreateADChildPDC": "CreateADPDC.ps1\\CreateADPDC"
+      },
+      "ad3NicIP": "10.0.0.12",
+      "ad3PublicIpName": "[concat(parameters('configName'),'-AD3_IP')]",
+
       "appVmName": "APP1",
       "appConfigurationFunction": {
         "AppConfig": "AppConfig.ps1\\AppConfig"
       },
-      "appNicIP": "10.0.0.11",
+      "appNicIP": "10.0.0.13",
       "appPublicIpName": "[concat(parameters('configName'),'-APP_IP')]",
 
       "app2VmName": "APP2",
       "app2ConfigurationFunction": {
         "AppConfig": "AppConfig.ps1\\AppConfig"
       },
-      "app2NicIP": "10.0.0.12",
+      "app2NicIP": "10.0.0.14",
       "app2PublicIpName": "[concat(parameters('configName'),'-APP2_IP')]",
 
       "cliVmName": "CLIENT1",
-      "clientNicIP": "10.0.0.13",
+      "clientNicIP": "10.0.0.15",
       "cliPublicIpName": "[concat(parameters('configName'),'-CLI_IP')]"
     },
 
@@ -338,6 +352,62 @@
       }
     },
     {
+      "name": "[concat(parameters('configName'),'-AD2_NIC')]",
+      "condition": "[equals(parameters('deployADC2'),'Yes')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/',parameters('configName'),'-vnet')]"
+      ],
+      "apiVersion": "2018-01-01",
+      "comments": "This is the network interface for the ADDC2 VM.",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[variables('VMs').ad2NicIP]",
+              "publicIPAddress": {
+                "id": "[resourceId ('Microsoft.Network/publicIPAddresses/',variables('VMs').ad2PublicIpName)]"
+              },
+              "subnet": {
+                "id": "[variables('network').subnetRef]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "[concat(parameters('configName'),'-AD3_NIC')]",
+      "condition": "[equals(parameters('deployADC3'),'Yes')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/',parameters('configName'),'-vnet')]"
+      ],
+      "apiVersion": "2018-01-01",
+      "comments": "This is the network interface for the ADDC3 VM.",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[variables('VMs').ad3NicIP]",
+              "publicIPAddress": {
+                "id": "[resourceId ('Microsoft.Network/publicIPAddresses/',variables('VMs').ad3PublicIpName)]"
+              },
+              "subnet": {
+                "id": "[variables('network').subnetRef]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "name": "[concat(parameters('configName'),'-APP_NIC')]",
       "type": "Microsoft.Network/networkInterfaces",
       "location": "[resourceGroup().location]",
@@ -472,6 +542,74 @@
       }
     },
     {
+      "name": "ADDC2",
+      "condition": "[equals(parameters('deployADC2'),'Yes')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "comments": "This is the deployment resource for the ADDC2 VM.",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/',parameters('configName'),'-AD2_NIC')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('templates'),'/addc2.json',parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "SharedVmConfig": { 
+            "value": "[variables('SharedVmConfig')]" 
+          },
+          "vmName": {
+            "value": "[variables('VMs').ad2VmName]"
+          },
+          "nicName": {
+            "value": "[concat(parameters('configName'),'-AD2_NIC')]"
+          },
+          "modulesURL": {
+            "value": "[variables('assetLocation')]"
+          },
+          "configurationFunction": {
+            "value": "[variables('VMs').ad2ConfigurationFunction]"
+          }
+        }
+      }
+    },
+    {
+      "name": "ADDC3",
+      "condition": "[equals(parameters('deployADC3'),'Yes')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "comments": "This is the deployment resource for the ADDC VM.",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/',parameters('configName'),'-AD3_NIC')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('templates'),'/addc.json',parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "SharedVmConfig": { 
+            "value": "[variables('SharedVmConfig')]" 
+          },
+          "vmName": {
+            "value": "[variables('VMs').a3dVmName]"
+          },
+          "nicName": {
+            "value": "[concat(parameters('configName'),'-AD3_NIC')]"
+          },
+          "modulesURL": {
+            "value": "[variables('assetLocation')]"
+          },
+          "configurationFunction": {
+            "value": "[variables('VMs').ad3ConfigurationFunction]"
+          }
+        }
+      }
+    },
+    {
       "name": "AppServer",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -535,7 +673,7 @@
             "value": "[variables('assetLocation')]"
           },
           "configurationFunction": {
-            "value": "[variables('VMs').appConfigurationFunction]"
+            "value": "[variables('VMs').app2ConfigurationFunction]"
           }
         }
       }

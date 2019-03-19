@@ -153,12 +153,12 @@
       }
     },
     {
-        "apiVersion": "[providers('Microsoft.DevTestLab','labs').apiVersions[0]]",
+        "apiVersion": "2016-05-15",
         "type": "microsoft.devtestlab/schedules",
         "name": "[concat('shutdown-computevm-',parameters('vmName'))]",
         "location": "[resourceGroup().location]",
         "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
+          "[resourceId('Microsoft.Compute/virtualMachines',parameters('vmName'))]"
         ],
         "properties": {
             "status": "Enabled",
@@ -171,7 +171,7 @@
                 "status": "Disabled",
                 "timeInMinutes": 15
             },
-            "targetResourceId": "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
+            "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines',parameters('vmName'))]"
         }
     }    
   ]
