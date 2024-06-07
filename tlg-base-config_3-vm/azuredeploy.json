@@ -74,7 +74,8 @@
       "type": "string",
       "metadata": {
         "description": "The name of the domain administrator account to create, i.e. globaladmin. This will also be used to create a local admin account on each VMs."
-      }
+      },
+      "defaultValue": "Administrateur"
     },
     "adminPassword": {
       "type": "securestring",
@@ -109,8 +110,9 @@
     "dnsLabelPrefix": {
       "type": "string",
       "metadata": {
-        "description": "DNS label prefix for public IPs. Must be lowercase and match the regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-      }
+        "description": "DNS host prefix for public IPs. Must be lowercase and match the regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
+      },
+      "defaultValue" : "tptlg-"
     },
     "_artifactsLocation": {
       "type": "string",
