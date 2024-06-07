@@ -169,6 +169,7 @@
     //     "protectedSettings": null
     //   }
     // },
+    {
         "apiVersion": "2016-05-15",
         "type": "microsoft.devtestlab/schedules",
         "name": "[concat('shutdown-computevm-',parameters('vmName'))]",
