@@ -156,7 +156,7 @@
     // },
     {
         "apiVersion": "2018-09-15",
-        "type": "Microsoft.DevTestLab/labs/schedules",
+        "type": "Microsoft.DevTestLab/schedules",
         "name": "[concat('shutdown-computevm-',parameters('vmName'))]",
         "location": "[resourceGroup().location]",
         "dependsOn": [
