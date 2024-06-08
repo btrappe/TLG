@@ -18,22 +18,22 @@
       "value": ""
     },
     "deployADC2": {
-      "value": "no"
+      "value": "No"
     },
     "deployADC3": {
-      "value": "no"
+      "value": "No"
     },
     "deployAPP2": {
-      "value": "yes"
+      "value": "Yes"
     },
     "deployClientVM": {
-      "value": "no"
+      "value": "No"
     },
     "clientVhdUri": {
-      "value": "yes"
+      "value": "Yes"
     },
     "vmSize": {
-      "value": "Standard_DS2_v2"
+      "value": "Standard_DS2_v5"
     },
     "dnsLabelPrefix": {
       "value": ""
