@@ -105,7 +105,7 @@
       "metadata": {
         "description": "Select a VM size for all VMs in your deployment."
       },
-      "defaultValue": "Standard_DS2_v5"
+      "defaultValue": "Standard_D2as_v5"
     },
     "dnsLabelPrefix": {
       "type": "string",

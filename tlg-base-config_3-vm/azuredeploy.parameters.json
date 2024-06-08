@@ -33,7 +33,7 @@
       "value": "Yes"
     },
     "vmSize": {
-      "value": "Standard_DS2_v5"
+      "value": "Standard_D2as_v5"
     },
     "dnsLabelPrefix": {
       "value": ""
